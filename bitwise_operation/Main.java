@@ -7,9 +7,11 @@ public class Main {
 		//ビット位置は右から数える(0～nビット目)
 		//２進数の数ではなくて、８bit１組(1byte=1octet)のフラグのON/OFF制御として使う
 		//各演算子は 同じビット目同士を比べた結果がその各ビットごとに帰ってくる形
+		//ビット演算・シフト演算すると元の型関係なくint型として返ってしまうので、intかlongで計算する
 
 		//AND &
 		//どちらも１なら１、片方でも０の場合は０を返す
+		//両方がbool値の場合は 両方trueの場合trueを返す
 		int a = Integer.parseInt("11110000", 2);
 		int b = Integer.parseInt("10100000", 2);
 		int c = a & b; //int として返ってくる
@@ -17,6 +19,7 @@ public class Main {
 
 		//OR |
 		//どちらかが１なら１、両方０なら０を返す
+		//両方がbool値の場合は どちらかtrueの場合trueを返す
 		int d = Integer.parseInt("11110000", 2);
 		int e = Integer.parseInt("10101010", 2);
 		int f = d | e;
@@ -25,6 +28,7 @@ public class Main {
 		//XOR ^
 		//どちらか片方が１(=違う箇所)は１、両方０/両方１の場合は０を返す
 		//= 比較して違う箇所を１として返す
+		//両方がbool値の場合は 異なる場合にtrueを返す
 		int g = Integer.parseInt("11110000", 2);
 		int h = Integer.parseInt("10101010", 2);
 		int i = g ^ h;
@@ -32,6 +36,7 @@ public class Main {
 
 		//NOT ~
 		//すべてのビットの数値を反転させる 1101=>0010
+		//条件演算子としては !a と同義
 		int j = Integer.parseInt("01010101", 2);
 		int k = ~j;
 		String l = Integer.toBinaryString(k);
@@ -67,6 +72,8 @@ public class Main {
 
 
 	public static void bitShift(){
+		//シフト演算
+
 		//[ 左シフト ] a<<3 => aを左に３ビットシフト
 		//２進数なので、３ビット左＝ 2^3 倍の数になる
 		//0001(1) => 1000(8)
@@ -103,8 +110,5 @@ public class Main {
 		e = ~Integer.parseInt("00100000", 2) + 1; //これで一応同義か…
 		System.out.println(Integer.toBinaryString(e));
 		System.out.println(Integer.toBinaryString(e>>>3));
-
-
-		//シフト演算すると元の型関係なくint型として返ってしまうので、intかlongで計算する
 	}
 }
