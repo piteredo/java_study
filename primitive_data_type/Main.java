@@ -1,5 +1,5 @@
 package java_study.primitive_data_type;
-//package 名は、ローワーネークケース
+//package 名は、ローワースネークケース
 
 public class Main {
 	public static void main(String[] args) {
@@ -7,26 +7,22 @@ public class Main {
 		//符号付き整数
 
 		byte a; //8bit
-		short b, c; //16bit 2カルテット
-		int d; //32bit 4カルテット
-		long e = 10; //64bit 8カルテット
-
+		short b, c; //16bit 2オクテット
+		int d; //32bit 4オクテット
+		long e = 10; //64bit オクテット
+		//大きい桁から(左側から) 第１～４オクテット という様にブロックを指して呼ぶときにも使われる
 		//まとめて宣言できる・すぐ値を代入しなくても良い
 		//符号(0=正 / 1=負)先頭1bit + 残りのbitで数字
 		//0が正の数なので -n～n-1 の範囲になる
 
 		//System.out.println(d); //初期化してない変数を参照するとコンパイルエラー
-
 		a = 024; //0 を加えることで 8進数(octal)として代入できる
 		System.out.println(a);
-
 		b = 0xf; //0x を加えることで 16進数(hexadecimal)として代入できる
 		System.out.println(b);
-
 		System.out.println(15); //予告なしの整数は int として扱われる
 		//System.out.println(99999999999); //よってこれはコンパイルエラー
 		System.out.println(99999999999L); //L を付けることで強制的に long型にできる
-
 
 
 
@@ -46,7 +42,6 @@ public class Main {
 
 
 
-
 		//char
 		char h = '水'; //16bit の Unicode文字・シングルクォーテーションで囲む！
 		System.out.println(h);
@@ -61,15 +56,14 @@ public class Main {
 
 
 
-
 		//型変換・キャスト(抜粋)
 		//型変換 => 暗黙の型変換処理・拡大変換OK・縮小方向はコンパイルエラー
-		//キャスト => 意識的に行う型変換処理・縮小方向で溢れた分は(２進数)大きい桁が切り捨てられる
+		//キャスト => 意識的に行う型変換処理・縮小方向で溢れた分は(２進数での)大きい桁が切り捨てられる
 		short k = Short.parseShort("0000000100000111", 2);
 		System.out.println(k);
 		System.out.println((byte)k);
-		System.out.println(Integer.toBinaryString((byte)k));//下位８桁のみ残って 111=7に
+		System.out.println(Integer.toBinaryString((byte)k));//下位８桁のみ残って 00000111=7に
 		//0x 0 で16, 8進数は代入できるのに 2進数で楽々代入できる記号はないのか？
-		//Byte クラスに toBinaryString がない？
+		//Byte クラスには toBinaryString がない。この辺りの意図とは？
 	}
 }
