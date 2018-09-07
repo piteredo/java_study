@@ -31,6 +31,8 @@ public final class Main extends SuperClass implements IEx {
 		Main self = new Main();
 		self.instanceMethod();
 		self.run();
+
+		System.out.println(  NUM  ); //interfaceのメンバ変数
 	}
 
 	private void instanceMethod(){
@@ -42,8 +44,8 @@ public final class Main extends SuperClass implements IEx {
 		System.out.println("Interface method");
 	}
 
-	//
-	public void methometho() {
+	//アクセスレベル・引数・戻り値などは継承元に揃える
+	protected void methometho() {
 
 	}
 
@@ -69,7 +71,7 @@ abstract class SuperClass extends SuperSuper {
 	}
 
 	//抽象メソッド(継承クラスで実装する)
-	abstract public void methometho();
+	abstract protected void methometho();
 
 	//abstractクラスは実装メソッドがあっても良い
 	@Override //アノテーションは書く(google規約) Oは大文字
@@ -89,6 +91,16 @@ class SuperSuper {
 }
 
 
-interface IEx {
-	void run(); //メソッドの宣言のみ。実装は継承クラスで行う
+//interfaceがさらにinterface継承するときは extends 使う。複数継承可
+interface IEx extends ISS, IDD {
+	int NUM = 1;//自動的にpublicstatic final省略可
+	void run(); //メソッドの宣言のみ。実装は継承クラスで行う・自動的にpublic abstract省略可
+}
+
+interface ISS {
+
+}
+
+interface IDD {
+
 }
