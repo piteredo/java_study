@@ -56,7 +56,6 @@ class Main {
 		System.out.println("--");
 
 
-
 		// toArray でリストを配列に変換
 		Integer[] ia = al.toArray(new Integer[al.size()]); // 引数に同型の配列(要素数つき)を渡す
 		for(Integer s : ia){ System.out.println(s);	}
@@ -75,7 +74,6 @@ class Main {
 		System.out.println(intList);
 		System.out.println("--");
 		*/
-
 
 
 		// クラスをリストに詰め込む一例
