@@ -55,9 +55,28 @@ class Main {
 		System.out.println(  al.size()  );
 		System.out.println("--");
 
+
+
 		// toArray でリストを配列に変換
 		Integer[] ia = al.toArray(new Integer[al.size()]); // 引数に同型の配列(要素数つき)を渡す
 		for(Integer s : ia){ System.out.println(s);	}
+		System.out.println("--");
+
+
+		// Arrays.asList(arr) で配列をリストに変換
+		String[] strArr = new String[]{"tes1", "tes2", "tes3"};
+		List<String> strList = Arrays.asList(strArr);
+		System.out.println(strList);
+		System.out.println("--");
+		/*
+		プリミティブ型は List にできないので asList できない。IntegerならOK
+		int[] intArr = new int[]{1, 2, 3};
+		List<int> intList = Arrays.asList(intArr);
+		System.out.println(intList);
+		System.out.println("--");
+		*/
+
+
 
 		// クラスをリストに詰め込む一例
 		class Test {
@@ -229,9 +248,9 @@ class Main {
 		Iterator<String> it = hs.iterator();
 
 		// hasNext 次の要素が存在するか boolean 返す
+		// 次とは、０番目からのことを指しているのか？？
 		while(it.hasNext()){
 			// 次の要素を取り出す・これをしないと無限ループになる
-			// 次とは、０番目からのことを指しているのか？？
 			String item = it.next();
 			System.out.println(item);
 		}
